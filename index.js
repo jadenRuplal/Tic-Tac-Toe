@@ -19,7 +19,7 @@ const possibleWins = [
 	[0, 4, 8],
 	[2, 4, 6]
 ]
-
+let wim = false
 
 const playNow = (event) => {
     // based on current turn place an x or o in box clicked
@@ -58,10 +58,12 @@ function checkWinner() {
          position1 = possibility[0]
          position2 = possibility[1]
          position3 = possibility[2]
+    
          if (stats[position1] == stats[position2]  
             && stats[position1]  == stats[position3] 
             && stats[position2] == stats[position3] 
             && stats[position1] != '') {
+             wim = true
             winner.innerHTML = 'Player ' + stats[position1] + ' has won'
             boxes.forEach(item => {
                 item.removeEventListener('click', playNow)
@@ -74,7 +76,7 @@ function checkWinner() {
     let count = 0
     stats.forEach (function (stat) {
         // adds 1 to count everytime there is an x or o in stat
-        if (stat != '') {
+        if (stat != '' && wim === false) {
             count = count + 1
         }
     })
