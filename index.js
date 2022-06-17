@@ -87,6 +87,7 @@ function checkWinner() {
 }
 
 const resetGame = () => {
+     wim = false
     // starts at X
     currentTurn = "X"
     // restets stored data back to nothing
